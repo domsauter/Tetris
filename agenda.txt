@@ -1,0 +1,11 @@
+1.  Tetrominos erstellen
+2.  Spielfeld erstellen
+3.  Tetrominos fallen lassen
+4.  Steuerung hinzufügen
+5.  Kollisionserkennung
+6.  Linienlöschung
+7.  Punktezählung und Level
+8.  Spielüberprüfung
+9.  Grafiken und Benutzeroberfläche
+10. Testen und Debuggen
+11. Feinschliff und Verbesserungen
