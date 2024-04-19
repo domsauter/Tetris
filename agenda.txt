@@ -1,7 +1,15 @@
-1.  Tetrominos erstellen
+1.  Spielsteine erstellen - DONE
 2.  Spielfeld erstellen
-3.  Tetrominos fallen lassen
-4.  Steuerung hinzufügen
+        Spielfeldgröße festlegen: - DONE
+        Spielfeldstruktur definieren: - DONE
+        Grafische Darstellung des Spielfelds:
+        Spielfeld initialisieren: - DONE
+        Spielfeld aktualisieren:
+        Spielfeld überprüfen:
+        Spielfeldgrenzen beachten:
+        Testen:
+3.  Spielsteine fallen lassen
+4.  Steuerung hinzufügen -
 5.  Kollisionserkennung
 6.  Linienlöschung
 7.  Punktezählung und Level
