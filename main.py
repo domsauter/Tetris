@@ -61,7 +61,14 @@ class GameBoard:
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.grid =
+        self.grid = [[0] * width for _ in range(height)] # Erstelle ein leeres Spielfeld
+
+    def clear(self):
+        self.grid = [[0] * self.width for _ in range(self.height)]
+
+    def print(self):
+        for row in self.grid:
+            print(row)
 
 def main():
     pygame.init()
