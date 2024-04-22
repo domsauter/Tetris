@@ -1,23 +1,25 @@
+import pygame
+from colors import Colors
+
 class GameBoard:
-    def __init__(self, width, height):
+    def __init__(self):
         """Initialisiert das Spielfeld"""
-        self.width = width
-        self.height = height
-        self.grid = [[0] * width for _ in range(height)] # Erstelle ein leeres Spielfeld
+        self.rows = 20
+        self.cols = 10
+        self.cell_size = 30
+        self.grid = [[0 for j in range(self.cols)] for i in range(self.rows)] # Erstelle ein leeres Spielfeld
+        self.colors = Colors.get_color()
 
-    def clear(self):
-        """Leert dsd Spielfeld"""
-        self.grid = [[0] * self.width for _ in range(self.height)]
+    def print_board(self):
+        for row in range(self.rows):
+            for col in range(self.cols):
+                print(self.grid[row][col], end = " ")
+            print()
 
-    def __str__(self):
-        """Gibt eine formatierte Zeichenfolge des Spielfelds zurück."""
-        board_str = ""
-        for row in self.grid:
-            row_str = ""
-            for cell in row:
-                if cell == 0:
-                    row_str += " "
-                else:
-                    row_str += "X"
-            board_str += row_str + "\n"
-        return board_str
+    def draw_board(self, screen):
+        for row in range(self.rows):
+            for col in range(self.cols):
+                cell_value = self.grid[row][col]
+                cell_rect = pygame.Rect(col * self.cell_size + 1, row * self.cell_size + 1,
+                self.cell_size - 1, self.cell_size - 1)
+                pygame.draw.rect(screen, self.colors[cell_value], cell_rect)

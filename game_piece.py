@@ -1,44 +1,18 @@
+from colors import Colors
+import pygame
+
 class GamePiece:
-    def __init__(self, shape, color):
+    """Initiiert die Spielsteine"""
+    def __init__(self, shape):
         self.shape = shape
-        self.color = color
+        self.cells = {}
+        self.cell_size = 30
+        self.rotation_state = 0
+        self.colors = Colors.get_color()
 
-# Formen der Spielsteine
-I_SHAPE = [
-    [(0, 0), (1, 0), (2, 0), (3, 0)],
-]
-
-J_SHAPE = [
-    [(0, 0), (0, 1), (1, 1), (2, 1)],
-]
-
-L_SHAPE = [
-    [(0, 1), (1, 1), (2, 1), (2, 0)],
-]
-
-O_SHAPE = [
-    [(0, 0), (0, 1), (1, 0), (1, 1)],
-]
-
-S_SHAPE = [
-    [(1, 0), (2, 0), (0, 1), (1, 1)],
-]
-
-T_SHAPE = [
-    [(0, 1), (1, 0), (1, 1), (2, 1)],
-]
-
-Z_SHAPE = [
-    [(0, 0), (1, 0), (1, 1), (2, 1)],
-]
-
-# Farben der Spielsteine
-COLORS = {
-    'I': (0, 255, 255),  # Cyan
-    'J': (0, 0, 255),    # Blau
-    'L': (255, 165, 0),  # Orange
-    'O': (255, 255, 0),  # Gelb
-    'S': (0, 255, 0),    # Grün
-    'T': (128, 0, 128),  # Lila
-    'Z': (255, 0, 0),    # Rot
-}
+    def draw_piece(self, screen):
+        tiles = self.cells[self.rotation_state]
+        for tile in tiles:
+            tile_rect = pygame.Rect(tile.col * self.cell_size + 1, tile.row * self.cell_size + 1,
+            self.cell_size - 1, self.cell_size - 1)
+            pygame.draw.rect(screen, self.colors[self.shape], tile_rect)
