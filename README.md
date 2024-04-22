@@ -5,7 +5,6 @@ This project is a simple implementation of the classic Tetris game in Python usi
 
 ## Features
 - Classic Tetris gameplay mechanics
-- Customizable game speed
 - Scoring system to track player performance
 - Graphical user interface using Pygame for visual feedback
 - Supports keyboard controls for intuitive gameplay
