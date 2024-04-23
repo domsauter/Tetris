@@ -31,24 +31,39 @@ class LShape(GamePiece):
             3: [Position(0, 0), Position(0, 1), Position(1, 1), Position(2, 1)]
         }
 
-"""
-        L_SHAPE = [
-            [(0, 1), (1, 1), (2, 1), (2, 0)],
-        ]
+class OShape(GamePiece):
+    def __init__(self):
+        super().__init__(shape=4)
+        self.cells = {
+            0: [Position(1, 1), Position(2, 1), Position(1, 2), Position(2, 2)]
+        }
 
-        O_SHAPE = [
-            [(0, 0), (0, 1), (1, 0), (1, 1)],
-        ]
+class SShape(GamePiece):
+    def __init__(self):
+        super().__init__(shape=5)
+        self.cells = {
+            0: [Position(1, 0), Position(1, 1), Position(0, 1), Position(0, 2)],
+            1: [Position(0, 1), Position(1, 1), Position(1, 2), Position(2, 2)],
+            2: [Position(1, 1), Position(1, 2), Position(2, 1), Position(2, 0)],
+            3: [Position(0, 0), Position(1, 0), Position(1, 1), Position(2, 1)]
+        }
 
-        S_SHAPE = [
-            [(1, 0), (2, 0), (0, 1), (1, 1)],
-        ]
+class TShape(GamePiece):
+    def __init__(self):
+        super().__init__(shape=6)
+        self.cells = {
+            0: [Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 1)],
+            1: [Position(1, 0), Position(1, 1), Position(1, 2), Position(1, 2)],
+            2: [Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 1)],
+            3: [Position(0, 1), Position(1, 1), Position(2, 1), Position(1, 0)]
+        }
 
-        T_SHAPE = [
-            [(0, 1), (1, 0), (1, 1), (2, 1)],
-        ]
-
-        Z_SHAPE = [
-            [(0, 0), (1, 0), (1, 1), (2, 1)],
-        ]
-"""
+class ZShape(GamePiece):
+    def __init__(self):
+        super().__init__(shape=7)
+        self.cells = {
+            0: [Position(0, 0), Position(0, 1), Position(1, 1), Position(1, 2)],
+            1: [Position(0, 2), Position(1, 2), Position(1, 1), Position(2, 1)],
+            2: [Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 2)],
+            3: [Position(0, 1), Position(1, 1), Position(1, 0), Position(2, 0)]
+        }

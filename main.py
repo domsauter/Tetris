@@ -22,7 +22,8 @@ clock = pygame.time.Clock()
 
 game_board = GameBoard()
 
-game_piece = LShape()
+game_piece = ZShape()
+game_piece.move(4,3)
 
 game_board.print_board()
 
