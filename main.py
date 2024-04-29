@@ -1,8 +1,10 @@
 import pygame
 import sys
+from pygame.locals import *
 from game_board import GameBoard
 from game_piece import GamePiece
 from game_pieces import *
+from random_piece import *
 
 # KONSTANTEN
 SCREEN_WIDTH = 600
@@ -22,8 +24,8 @@ clock = pygame.time.Clock()
 
 game_board = GameBoard()
 
-game_piece = ZShape()
-game_piece.move(4,3)
+game_piece = create_random_stone()
+game_piece.move(0, 5)
 
 game_board.print_board()
 
@@ -38,6 +40,18 @@ while running:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        elif event.type == KEYDOWN:
+            if event.key == K_LEFT:
+                game_piece.move(0, -1)
+            elif event.key == K_RIGHT:
+                game_piece.move(0, 1)
+            elif event.key == K_DOWN:
+                game_piece.move(1, 0)
+            elif event.key == K_UP:
+                if not isinstance(game_piece, OShape):
+                    game_piece.rotate()
+
+    game_piece.move(1/30, 0)
 
     screen.fill(DARK_BLUE)
     game_board.draw_board(screen)

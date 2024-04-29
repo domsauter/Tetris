@@ -1,5 +1,6 @@
-from colors import Colors
 import pygame
+import random
+from colors import Colors
 from position import Position
 
 class GamePiece:
@@ -31,3 +32,6 @@ class GamePiece:
             tile_rect = pygame.Rect(tile.col * self.cell_size + 1, tile.row * self.cell_size + 1,
             self.cell_size - 1, self.cell_size - 1)
             pygame.draw.rect(screen, self.colors[self.shape], tile_rect)
+
+    def rotate(self):
+        self.rotation_state = (self.rotation_state + 1) % 4

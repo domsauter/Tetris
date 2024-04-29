@@ -53,9 +53,9 @@ class TShape(GamePiece):
         super().__init__(shape=6)
         self.cells = {
             0: [Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 1)],
-            1: [Position(1, 0), Position(1, 1), Position(1, 2), Position(1, 2)],
-            2: [Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 1)],
-            3: [Position(0, 1), Position(1, 1), Position(2, 1), Position(1, 0)]
+            1: [Position(0, 1), Position(1, 1), Position(2, 1), Position(1, 0)],
+            2: [Position(1, 0), Position(1, 1), Position(1, 2), Position(0, 1)],
+            3: [Position(0, 1), Position(1, 1), Position(2, 1), Position(1, 2)]
         }
 
 class ZShape(GamePiece):
@@ -64,6 +64,6 @@ class ZShape(GamePiece):
         self.cells = {
             0: [Position(0, 0), Position(0, 1), Position(1, 1), Position(1, 2)],
             1: [Position(0, 2), Position(1, 2), Position(1, 1), Position(2, 1)],
-            2: [Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 2)],
+            2: [Position(1, 0), Position(1, 1), Position(2, 1), Position(2, 2)],
             3: [Position(0, 1), Position(1, 1), Position(1, 0), Position(2, 0)]
         }

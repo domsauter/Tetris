@@ -2,8 +2,8 @@
 2.  setup gameloop - DONE
 3.  creating Gameboard - DONE
 4.  create the game pieces - DONE
-5.  move the game pieces
-6.  rotate the game pieces
+5.  move the game pieces - DONE
+6.  rotate the game pieces - DONE
 7.  check for collision
 8.  check for completed rows
 9.  Game over
