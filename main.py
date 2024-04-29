@@ -25,7 +25,7 @@ clock = pygame.time.Clock()
 game_board = GameBoard()
 
 game_piece = create_random_stone()
-game_piece.move(0, 5)
+game_piece.move(0, 3)
 
 game_board.print_board()
 
