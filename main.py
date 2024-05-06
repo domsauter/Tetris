@@ -22,17 +22,13 @@ pygame.display.set_caption("Tetris")
 
 clock = pygame.time.Clock()
 
+# Game-Klasse erstellen.
+
 game_board = GameBoard()
 
 game_piece = create_random_stone()
-game_piece.move(0, 3)
 
 game_board.print_board()
-
-# Aktuell fallender Spielstein
-# current_piece = GamePiece(I_SHAPE, COLORS['I']) # Beispiel: Starte mit einem I-Stück
-# current_piece.x = GAME_BOARD_WIDTH // 2 - 2
-# current_piece.y = 0
 
 running = True
 while running:
@@ -51,20 +47,9 @@ while running:
                 if not isinstance(game_piece, OShape):
                     game_piece.rotate()
 
-    game_piece.move(1/30, 0)
-
     screen.fill(DARK_BLUE)
     game_board.draw_board(screen)
     game_piece.draw_piece(screen)
-
-
-
-    # Spiellogik hier einfügen (z.B. Spielsteine bewegen, Kollisionen überprüfen, etc.)
-
-    # Spielfeldgrenzen zeichnen (optional)
-    # pygame.draw.rect(window, BLACK, pygame.Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT), 1)
-
-    # pygame.display.update() # Kein Update innerhalb der Schleife, um die Performance zu verbessern
 
     pygame.display.update()
 
