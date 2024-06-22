@@ -4,10 +4,10 @@
 4.  create the game pieces - DONE
 5.  move the game pieces - DONE
 6.  rotate the game pieces - DONE
-7.  check for collision
-8.  check for completed rows
-9.  Game over
-10. Create User
-11. Add Score
-12. Add next game piece
-13. Add sounds
+7.  check for collision - DONE
+8.  check for completed rows - DONE
+9.  Add next game piece - DONE
+10. Add sounds - DONE
+11. Add Score - DONE
+12. Game over - DONE
+13. Bug fixes
