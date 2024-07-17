@@ -10,8 +10,11 @@ pygame.init()
 pygame.mixer.init()
 
 # Load sounds
-line_clear_sound = pygame.mixer.Sound("sounds/line_clear.mp3")
-game_over_sound = pygame.mixer.Sound("sounds/game_over.mp3")
+try:
+    line_clear_sound = pygame.mixer.Sound("sounds/line_clear.mp3")
+except pygame.error as e:
+    print(f"Error loading sound: {e}")
+    line_clear_sound = None
 
 # Constants
 SCREEN_WIDTH = 600
@@ -37,6 +40,19 @@ game_board.print_board()
 FALL_EVENT = pygame.USEREVENT + 1
 pygame.time.set_timer(FALL_EVENT, 1000)
 
+def lock_and_update(game_piece):
+    global score, running
+    game_board.lock_piece(game_piece)
+    cleared_rows = game_board.clear_full_rows()
+    print(f"Rows cleared: {cleared_rows}")  # Debugging-Ausgabe
+    if cleared_rows > 0:
+        if line_clear_sound:
+            line_clear_sound.play()
+        score += cleared_rows * 100
+        print(f"Score updated to: {score}")  # Debugging-Ausgabe
+    if game_board.is_game_over():
+        running = False
+
 running = True
 while running:
     for event in pygame.event.get():
@@ -50,14 +66,7 @@ while running:
                 game_piece.move(0, 1, game_board)
             elif event.key == K_DOWN:
                 if not game_piece.move(1, 0, game_board):
-                    game_board.lock_piece(game_piece)
-                    cleared_rows = game_board.clear_full_rows()
-                    if cleared_rows > 0:
-                        line_clear_sound.play()
-                        score += cleared_rows * 100
-                    if game_board.is_game_over():
-                        game_over_sound.play()
-                        running = False
+                    lock_and_update(game_piece)
                     game_piece = next_piece
                     next_piece = create_random_stone()
             elif event.key == K_UP:
@@ -65,14 +74,7 @@ while running:
                     game_piece.rotate(game_board)
         elif event.type == FALL_EVENT:
             if not game_piece.move(1, 0, game_board):
-                game_board.lock_piece(game_piece)
-                cleared_rows = game_board.clear_full_rows()
-                if cleared_rows > 0:
-                    line_clear_sound.play()
-                    score += cleared_rows * 100
-                if game_board.is_game_over():
-                    game_over_sound.play()
-                    running = False
+                lock_and_update(game_piece)
                 game_piece = next_piece
                 next_piece = create_random_stone()
 

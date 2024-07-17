@@ -7,13 +7,13 @@ class GameBoard:
         self.rows = 20
         self.cols = 10
         self.cell_size = 30
-        self.grid = [[0 for j in range(self.cols)] for i in range(self.rows)] # Erstelle ein leeres Spielfeld
+        self.grid = [[0 for _ in range(self.cols)] for _ in range(self.rows)] # Erstelle ein leeres Spielfeld
         self.colors = Colors.get_color()
 
     def print_board(self):
         for row in range(self.rows):
             for col in range(self.cols):
-                print(self.grid[row][col], end = " ")
+                print(self.grid[row][col], end=" ")
             print()
 
     def draw_board(self, screen, score):
@@ -32,15 +32,18 @@ class GameBoard:
     def lock_piece(self, game_piece):
         for position in game_piece.get_cell_positions():
             self.grid[position.row][position.col] = game_piece.shape
-        self.clear_full_rows()
 
     def clear_full_rows(self):
         full_rows = 0
-        for row in range(self.rows):
-            if all(cell != 0 for cell in self.grid[row]):
+        new_grid = []
+        for row in self.grid:
+            if all(cell != 0 for cell in row):
                 full_rows += 1
-                del self.grid[row]
-                self.grid.insert(0, [0 for _ in range(self.cols)])
+            else:
+                new_grid.append(row)
+        new_rows = [[0 for _ in range(self.cols)] for _ in range(full_rows)]
+        self.grid = new_rows + new_grid
+        print(f"Full rows cleared: {full_rows}")  # Debugging-Ausgabe
         return full_rows
 
     def is_game_over(self):
